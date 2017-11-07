@@ -1,0 +1,28 @@
+{
+  "name": "lowbar",
+  "version": "1.0.0",
+  "dependencies": {
+    "sinon": "^3.2.1"
+  },
+  "scripts": {
+    "test": "mocha ./spec/",
+    "lint": "eslint --fix ./",
+    "posttest": "npm run lint",
+    "precommit": "npm test"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "eslint": "^3.15.0",
+    "husky": "^0.13.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gits92/Lowbar.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gits92/Lowbar/issues"
+  },
+  "homepage": "https://github.com/gits92/Lowbar#readme"
+}
