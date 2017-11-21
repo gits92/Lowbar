@@ -2,7 +2,7 @@
   "name": "lowbar",
   "version": "1.0.0",
   "dependencies": {
-    "sinon": "^3.2.1"
+    "sinon": "^3.3.0"
   },
   "scripts": {
     "test": "mocha ./spec/",
