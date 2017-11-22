@@ -262,7 +262,7 @@ describe('#map', function() {
       })
     ).to.eql([false, false, true, true, false]);
   });
-  it.only('binds the iteratee to the context object if one is passed', function() {
+  it('binds the iteratee to the context object if one is passed', function() {
     let context = { a: '1', b: '2', c: '3' };
     let res = [];
     _.map(
@@ -273,5 +273,21 @@ describe('#map', function() {
       context
     );
     expect(res).to.eql(['a1', 'b1', 'c1']);
+  });
+});
+describe('#contains', function() {
+  it('should return true if the array contains the specified value, false if it does not', function() {
+    expect(_.contains([1, 2, 3], 1)).to.equal(true);
+    expect(_.contains([1, 2, 3], 4)).to.equal(false);
+    expect(_.contains('hello', 'o')).to.equal(true);
+    expect(_.contains('hello', 'z')).to.equal(false);
+  });
+  it('should return true if the object contains the specified value, false if it does not', function() {
+    expect(_.contains({ 1: 'a', 2: 'b' }, 'a')).to.equal(true);
+    expect(_.contains({ 1: 'a', 2: 'b' }, 'c')).to.equal(false);
+  });
+  it('searches from a specified index when given as an argument', function() {
+    expect(_.contains([1, 2, 3, 4, 5, 6], 2, 3)).to.equal(false);
+    expect(_.contains('hello', 'h', 3)).to.equal(false);
   });
 });

@@ -107,10 +107,24 @@ _.uniq = function(array, iteratee) {
 _.map = function(list, iteratee, context) {
   if (context) iteratee = iteratee.bind(context);
   let newArr = [];
-  _.each(list, function(item, index, list) {
-    newArr.push(iteratee(item, index, list));
+  _.each(list, function(el, index, list) {
+    newArr.push(iteratee(el, index, list));
   });
   return newArr;
+};
+
+_.contains = function(list, val, fromIndex = 0) {
+  if (Array.isArray(list) || typeof list === 'string') {
+    if (_.indexOf(list, val, fromIndex) === -1) {
+      return false;
+    } else return true;
+  }
+  if (typeof list === 'object') {
+    for (var key in list) {
+      if (list[key] === val) return true;
+    }
+  }
+  return false;
 };
 
 module.exports = _;
