@@ -93,4 +93,24 @@ _.reject = function(list, predicate, context) {
   return arr;
 };
 
+_.uniq = function(array, iteratee) {
+  var result = [];
+  if (!array) return result;
+  for (var i = 0; i < array.length; i++) {
+    if (iteratee && result.indexOf(iteratee(array[i]))) {
+      result.push(array[i]);
+    } else if (result.indexOf(array[i]) === -1) result.push(array[i]);
+  }
+  return result;
+};
+
+_.map = function(list, iteratee, context) {
+  if (context) iteratee = iteratee.bind(context);
+  let newArr = [];
+  _.each(list, function(item, index, list) {
+    newArr.push(iteratee(item, index, list));
+  });
+  return newArr;
+};
+
 module.exports = _;

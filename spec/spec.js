@@ -191,7 +191,7 @@ describe('filter', function() {
   });
 });
 
-describe.only('#reject', function() {
+describe('#reject', function() {
   it('should return an empty array when provided with an invalid data type', function() {
     expect(
       _.reject(123, function(num) {
@@ -229,5 +229,49 @@ describe.only('#reject', function() {
     };
     _.reject([1, 2, 3], predicate, context);
     expect(arr).to.eql([2, 2, 2]);
+  });
+});
+describe('#uniq', function() {
+  it('should return uniq elements in array', function() {
+    expect(_.uniq([1, 2, 1, 4, 1, 3])).to.eql([1, 2, 4, 3]);
+    expect(_.uniq([2, 2, 2])).to.eql([2]);
+    expect(_.uniq([])).to.eql([]);
+  });
+  it('should work for other value types', function() {
+    expect(_.uniq('hello')).to.eql(['h', 'e', 'l', 'o']);
+    expect(_.uniq(665)).to.eql([]);
+    expect(_.uniq({})).to.eql([]);
+    expect(_.uniq(true)).to.eql([]);
+  });
+});
+describe('#map', function() {
+  it('should return a new array where an iteratee has been run on each element', function() {
+    expect(
+      _.map([1, 2, 3, 4], function(el) {
+        return el * 2;
+      })
+    ).to.eql([2, 4, 6, 8]);
+    expect(
+      _.map({ a: 1, b: 2, c: 3 }, function(el) {
+        return el * 2;
+      })
+    ).to.eql([2, 4, 6]);
+    expect(
+      _.map('hello', function(char) {
+        return char === 'l';
+      })
+    ).to.eql([false, false, true, true, false]);
+  });
+  it.only('binds the iteratee to the context object if one is passed', function() {
+    let context = { a: '1', b: '2', c: '3' };
+    let res = [];
+    _.map(
+      ['a', 'b', 'c'],
+      function(el) {
+        return res.push(el + context.a);
+      },
+      context
+    );
+    expect(res).to.eql(['a1', 'b1', 'c1']);
   });
 });
