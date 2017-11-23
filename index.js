@@ -127,4 +127,24 @@ _.contains = function(list, val, fromIndex = 0) {
   return false;
 };
 
+_.zip = function() {
+  const res = [];
+  for (var i = 0; i < arguments[0].length; i++) {
+    console.log(arguments);
+    let singleArr = [];
+    for (var j = 0; j < arguments.length; j++) {
+      // console.log(arguments[i]);
+      singleArr.push(arguments[j][i]);
+    }
+    res.push(singleArr);
+  }
+  return res;
+};
+
+_.flatten = function(arr) {
+  return arr.reduce(function(acc, arrays) {
+    return acc.concat(Array.isArray(arrays) ? _.flatten(arrays) : arrays);
+  }, []);
+};
+
 module.exports = _;

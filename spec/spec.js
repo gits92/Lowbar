@@ -291,3 +291,17 @@ describe('#contains', function() {
     expect(_.contains('hello', 'h', 3)).to.equal(false);
   });
 });
+describe('#zip', function() {
+  it('Merges together the values of each of the arrays with the values at the corresponding position', function() {
+    expect(_.zip([1, 2, 3], ['a', 'b', 'c'], [true, false, true])).to.eql([
+      [1, 'a', true],
+      [2, 'b', false],
+      [3, 'c', true]
+    ]);
+  });
+});
+describe('#flatten', function() {
+  it('Flattens a nested array (the nesting can be to any depth).', function() {
+    expect(_.flatten([1, [2], [3, [[4]]]])).to.eql([1, 2, 3, 4]);
+  });
+});

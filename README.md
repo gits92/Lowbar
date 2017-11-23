@@ -18,3 +18,22 @@ A re-implementation of many of the functions in the underscore library.
 14. some
 15. extends
 16. defaults
+
+# Advanced Lowbar
+
+1. `once`
+2. `negate`
+3. `shuffle`
+4. `invoke`
+5. `sortBy` (NB the Underscore library uses the native JavaScript sort but feel
+   free to use your sort algorithm!)
+6. `zip`
+7. `sortedIndex`
+8. `flatten`
+9. `intersection`
+10. `difference`
+11. `memoize`
+12. `delay`
+13. `where`
+14. `throttle`
+15. `partial`
