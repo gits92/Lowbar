@@ -127,6 +127,42 @@ _.contains = function(list, val, fromIndex = 0) {
   return false;
 };
 
+_.pluck = function(list, propertName) {
+  return _.map(list, function(item, i, list) {
+    if (list[i].hasOwnProperty(propertName)) {
+      return list[i][propertName];
+    }
+  });
+};
+
+_.some = function(list, predicate, context) {
+  if (context) predicate = predicate.bind(context);
+  if (Array.isArray(list) || typeof list === 'string') {
+    for (let i = 0; i < list.length; i++) {
+      if (predicate(list[i]) === true) return true;
+    }
+  } else if (typeof list === 'object' || list !== null) {
+    for (let key in list) {
+      if (predicate(list[key]) === true) return true;
+    }
+  }
+  return false;
+};
+
+_.every = function(list, predicate, context) {
+  if (context) predicate = predicate.bind(context);
+  if (Array.isArray(list) || typeof list === 'string') {
+    for (var i = 0; i < list.length; i++) {
+      if (predicate(list[i]) === false) return false;
+    }
+  } else if (typeof list === 'object' || list !== null) {
+    for (var key in list) {
+      if (predicate(list[key]) === false) return false;
+    }
+  }
+  return true;
+};
+
 _.zip = function() {
   const res = [];
   for (var i = 0; i < arguments[0].length; i++) {
